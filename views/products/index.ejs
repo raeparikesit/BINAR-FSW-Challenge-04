@@ -1,0 +1,33 @@
+<%- include("../partials/head") %>
+
+    <body>
+        <h1>Tabel Car Management</h1>
+        <table>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Picture</th>
+            <th>Action</th>
+            <% cars.map((productcars)=> { %>
+                <tr>
+                    <td><%= productcars.id %></td>
+                    <td><%= productcars.name %></td>
+                    <td><%= productcars.price %></td>
+                    <td><%= productcars.size %></td>
+                    <td><%= productcars.imgUrl %></td>
+                    <td>
+                        <a href="/admin/product/edit/<%= productcars.id %>">
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+
+        <a href="/admin/product/create">
+            <button>create product baru</button>
+        </a>
+    </body>
+
+    </html>
