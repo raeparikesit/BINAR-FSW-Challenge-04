@@ -1,17 +1,17 @@
 <%- include("../partials/head") %>
 
 <body>
-    <h1>Input Data Product Baru</h1>
-    <form action="/products" method="POST">
-        <label for="">name</label>
+    <h1>Add New Car</h1>
+    <form action="/cars" method="POST">
+        <label for="">Nama</label>
         <input type="text" name="name" placeholder="buku gambar"><br>
-        <label for="">price</label>
+        <label for="">Sewa Per Hari</label>
         <input type="text" name="price" placeholder="10000"><br>
-        <label for="">size</label>
+        <label for="">Ukuran</label>
         <input type="text" name="size" placeholder="small"><br>
-        <label for="">image</label>
+        <label for="">Gambar</label>
         <input type="file" name="imgUrl" placeholder="10"><br>
-        <button type="submit">Add</button>
+        <button type="submit">Save</button>
     </form>
 </body>
 </html>

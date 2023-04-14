@@ -17,24 +17,24 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
-// ini untuk page lihat semua produk dari database
+// lihat semua produk dari database
 app.get("/", async (req, res) => {
   // get data dari database pake sequelize method findAll
   const cars = await productcars.findAll();
 
   // proses akhir = response yg render ejs file kalian
-  res.render("products/index", {
+  res.render("crud/index", {
     cars,
   });
 });
 
-// ini utk render page create product
-app.get("/admin/product/create", (req, res) => {
-  res.render("products/create");
+// render page create cars
+app.get("/cars/create", (req, res) => {
+  res.render("crud/create");
 });
 
-// ini untuk create product baru
-app.post("/products", (req, res) => {
+// create car baru
+app.post("/cars", (req, res) => {
   // request body => req.body.name
   const { name, price, size } = req.body;
 
@@ -44,28 +44,27 @@ app.post("/products", (req, res) => {
     name,
     price,
     size,
-    // size: req.body.size,
   });
 
   // response redirect page
   res.redirect(201, "/");
 });
 
-// ini utk render page edit product
-app.get("/admin/product/edit/:id", async (req, res) => {
-  // proses ambil detail product sesuai id yg di params
+// render page edit cars
+app.get("/cars/edit/:id", async (req, res) => {
+  // detail product sesuai id yg di params
   const data = await productcars.findByPk(req.params.id);
   const productcarsDetail = data.dataValues;
-  res.render("products/update", {
+  res.render("crud/update", {
     productcarsDetail,
     sizeOptions: ["small", "medium", "large"],
   });
 });
 
-// ini untuk update product
-app.post("/products/edit/:id", (req, res) => {
+// update cars
+app.post("/cars/edit/:id", (req, res) => {
   // req.params.id
-  // request body => req.body.name
+
   const { name, price, size } = req.body;
   const id = req.params.id;
 
@@ -86,6 +85,18 @@ app.post("/products/edit/:id", (req, res) => {
   );
 
   // response redirect page
+  res.redirect(200, "/");
+});
+
+// delete produk
+app.get("/cars/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  productcars.destroy({
+    where: {
+      id,
+    },
+  });
+
   res.redirect(200, "/");
 });
 
