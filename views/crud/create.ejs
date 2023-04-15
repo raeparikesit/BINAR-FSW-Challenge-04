@@ -1,17 +1,36 @@
 <%- include("../partials/head") %>
 
-<body>
-    <h1>Add New Car</h1>
-    <form action="/cars" method="POST">
-        <label for="">Nama</label>
-        <input type="text" name="name" placeholder="buku gambar"><br>
-        <label for="">Sewa Per Hari</label>
-        <input type="text" name="price" placeholder="10000"><br>
-        <label for="">Ukuran</label>
-        <input type="text" name="size" placeholder="small"><br>
-        <label for="">Gambar</label>
-        <input type="file" name="imgUrl" placeholder="10"><br>
-        <button type="submit">Save</button>
-    </form>
-</body>
-</html>
+    <body>
+        <h1>Add New Car</h1>
+        <form class="form-style" action="/cars" method="POST">
+
+            <div class="finput">
+                <p style="width: 25%;">Nama<span style="color: red;">*</span></p>
+                <input type="text" name="name" placeholder="Avanza"><br>
+            </div>
+
+            <div class="finput">
+                <p style="width: 25%;">Sewa Per Hari<span style="color: red;">*</span></p>
+                <input type="text" name="price" placeholder="100000000"><br>
+            </div>
+
+            <div class="finput">
+                <p style="width: 25%;">Ukuran<span style="color: black;">*</span></p>
+                <input type="text" name="size" placeholder="Large"><br>
+            </div>
+
+            <div class="finput">
+                <p style="width: 25%;">Gambar<span style="color: red;">*</span></p>
+                <div class="upload">
+                    <input type="file" name="imgUrl" placeholder="10">
+                    <i style="margin-right: 20px; color: #333;" class="fas fa-upload"></i>
+                </div>
+                <br>
+            </div>
+            <div class="finput"></div>
+
+            <button type="submit">Save</button>
+        </form>
+    </body>
+
+    </html>

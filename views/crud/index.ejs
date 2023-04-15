@@ -1,36 +1,69 @@
 <%- include("../partials/head") %>
 
     <body>
-        <h1>Tabel Car Management</h1>
-        <table>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Size</th>
-            <th>Picture</th>
-            <th>Action</th>
-            <% cars.map((productcars)=> { %>
-                <tr>
-                    <td><%= productcars.id %></td>
-                    <td><%= productcars.name %></td>
-                    <td><%= productcars.price %></td>
-                    <td><%= productcars.size %></td>
-                    <td><%= productcars.imgUrl %></td>
-                    <td>
-                        <a href="/cars/edit/<%= productcars.id %>">
-                            <button>Edit</button>
-                        </a>
-                        <a href="/cars/delete/<%= productcars.id %>">
-                            <button>Delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <% }) %>
-        </table>
 
-        <a href="/cars/create">
-            <button>+ Add New Car</button>
-        </a>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; width: 85%; max-width: 1440px; ">
+                <h4 style="color: black;">List Cars</h4>
+                <a href="/cars/create">
+                    <button style="background-color: #0D28A6; display: flex; gap: 10px;">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add New Car</span>
+                    </button>
+                </a>
+            </div>
+            <div class="list">
+                <button class="filter-button" style="background-color: #aab9ff;">All</button>
+                <button class="filter-button">Small</button>
+                <button class="filter-button">Medium</button>
+                <button class="filter-button">Large</button>
+            </div>
+
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%; align-items: center;">
+                <% cars.map((productcars, index)=> {%>
+
+                    <div class="card">
+                        <div>
+                            <img src="/assets/dummy2.jpg" alt="dummy"
+                                style="width: 200px; height: 200px; border-radius: 10px; ">
+                        </div>
+                        <div class="item-card">
+                            <div>
+                                <%= productcars.name %>
+                            </div>
+                            <div>
+                                <b>
+                                    Rp. <%= productcars.price %> / hari
+                                </b>
+                            </div>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <span style="color: gray;">Updated at 9 November, 23.00 WIB</span>
+                            </div>
+                        </div>
+                        <div class="button-gap">
+                            <a href="/cars/delete/<%= productcars.id %>">
+                                <button class="delete-button" style="padding: 10px 25px 10px 25px;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+                            </a>
+                            <a href="/cars/edit/<%= productcars.id %>">
+                                <button style="padding: 10px 25px 10px 25px;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <span>Edit</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <% }) %>
+            </div>
+        </div>
+
+
     </body>
 
     </html>
