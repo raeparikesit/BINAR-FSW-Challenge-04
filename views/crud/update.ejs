@@ -1,19 +1,45 @@
 <%- include("../partials/head") %>
 
-<body>
-    <h1>Update Car Information</h1>
-    <form action="/cars/edit/<%= productcarsDetail.id %>" method="POST">
-        <label for="">Nama</label>
-        <input type="text" name="name" placeholder="buku gambar" value="<%= productcarsDetail.name %>"><br>
-        <label for="">Sewa Per Hari</label>
-        <input type="text" name="price" placeholder="10000" value="<%= productcarsDetail.price %>"><br>
-        <label for="">Ukuran</label>
-        <select name="size" id="">
-            <% sizeOptions.map((size) => { %>
-                <option value="<%= size %>"><%= size %></option> 
-            <% }) %>
-        </select><br>
-        <button type="submit">Save</button>
-    </form>
-</body>
-</html>
+    <body>
+        <div class="main-create">
+            <h1>Edit Car <%= productcarsDetail.name %>
+            </h1>
+            <form class="form-main" name="inputForm" action="/cars/edit/<%= productcarsDetail.id %>" method="POST">
+
+                <div class="form-style">
+                    <div class="finput">
+                        <p style="width: 25%;">Nama<span style="color: red;">*</span></p>
+                        <input class="input-style" value="<%= productcarsDetail.name %>" type="text" name="name"
+                            required placeholder="Avanza"><br>
+                    </div>
+
+                    <div class="finput">
+                        <p style="width: 25%;">Sewa Per Hari<span style="color: red;">*</span></p>
+                        <input class="input-style" type="text" value="<%= productcarsDetail.price %>" name="price"
+                            required placeholder="100000000"><br>
+                    </div>
+
+                    <div class="finput">
+                        <p style="width: 25%;">Ukuran<span style="color: black;">*</span></p>
+                        <select class="input-style" name="size" id="">
+                            <% sizeOptions.map((size)=> { %>
+                                <option value="<%= size %>" <% if(size==productcarsDetail.size){ %> selected <% } %> >
+                                        <%= size %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <a href="/">
+                        <p class="cancel-button">Cancel</p>
+                    </a>
+                    <button class="save-button" type="submit">Edit</button>
+                </div>
+            </form>
+        </div>
+
+    </body>
+
+    </html>

@@ -14,10 +14,18 @@
                 </a>
             </div>
             <div class="list">
-                <button class="filter-button" style="background-color: #aab9ff;">All</button>
-                <button class="filter-button">Small</button>
-                <button class="filter-button">Medium</button>
-                <button class="filter-button">Large</button>
+                <a href="/">
+                    <button class="filter-button" style="background-color: #aab9ff;">All</button>
+                </a>
+                <a href="/?filter=small">
+                    <button class="filter-button">Small</button>
+                </a>
+                <a href="/?filter=medium">
+                    <button class="filter-button">Medium</button>
+                </a>
+                <a href="/?filter=large">
+                    <button class="filter-button">Large</button>
+                </a>
             </div>
 
             <div
@@ -26,8 +34,8 @@
 
                     <div class="card">
                         <div>
-                            <img src="/assets/dummy2.jpg" alt="dummy"
-                                style="width: 200px; height: 200px; border-radius: 10px; ">
+                            <img src="<%= productcars.pict %>" alt="<%= productcars.name %>"
+                                style="height: 200px; aspect-ratio: 5/4; border-radius: 10px; ">
                         </div>
                         <div class="item-card">
                             <div>
@@ -63,6 +71,7 @@
             </div>
         </div>
 
+        <script></script>
 
     </body>
 
